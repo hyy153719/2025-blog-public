@@ -1,8 +1,8 @@
 {
 	"meta": {
-		"title": "Yi",
-		"description": "YYsuni 的个人博客，记录前端开发、探索、笔记。前端 UI 更新代码仓库。",
-		"username": "Suni"
+		"title": "Yi.",
+		"description": "hyy的个人博客，记录aigc学习。",
+		"username": "hyy"
 	},
 	"theme": {
 		"colorBrand": "#de4331",
@@ -37,32 +37,14 @@
 		{
 			"id": "",
 			"url": ""
-		}
-	],
-	"currentBackgroundImageId": "",
-	"socialButtons": [
-		{
-			"id": "github",
-			"type": "github",
-			"value": "https://github.com/yysuni",
-			"label": "Github",
-			"order": 3
 		},
 		{
-			"id": "juejin",
-			"type": "juejin",
-			"value": "https://juejin.cn/user/2427311675422382",
-			"label": "稀土掘金",
-			"order": 2
-		},
-		{
-			"id": "email",
-			"type": "email",
-			"value": "yysuni1001@gmail.com",
-			"label": "",
-			"order": 1
+			"id": "7932f0fe04440d17",
+			"url": "/images/background/7932f0fe04440d17.jpg"
 		}
 	],
+	"currentBackgroundImageId": "7932f0fe04440d17",
+	"socialButtons": [],
 	"clockShowSeconds": false,
 	"summaryInContent": false,
 	"isCachePem": false,
