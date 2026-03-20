@@ -23,7 +23,7 @@ const CDN_SCRIPTS = [
 	'https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/cubism4.min.js'
 ]
 
-const MODEL_URL = '/live2d/live2d.model3.json'
+const MODEL_URL = '/live2d/blackcat/model.json'
 
 function loadScript(src: string): Promise<void> {
 	return new Promise((resolve, reject) => {
