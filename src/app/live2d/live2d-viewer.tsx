@@ -115,11 +115,17 @@ export default function Live2DViewer() {
 
 // 🔴 关键修改：去掉了圆角(rounded-full)和正方形(aspect-square)
 // 改成了 fixed 悬浮定位，固定在右下角 (bottom-0 right-0)，并设置了固定的宽高限制
-	return (
-		<div className='fixed bottom-0 right-0 z-50 h-[550px] w-[350px] pointer-events-none'>
-			<div ref={containerRef} className='absolute inset-0 h-full w-full pointer-events-auto' />
-			{status === 'loading' && <div className='text-secondary absolute inset-0 flex items-center justify-center'>加载甘雨中…</div>}
-			{status === 'error' && <div className='absolute inset-0 flex items-center justify-center p-4 text-center text-red-500'>{errorMsg}</div>}
-		</div>
-	)
-}
+// 🔴 替换为这一段
+return (
+    <div className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 h-[700px] w-[500px] pointer-events-none'>
+        {/*
+          说明：
+          - fixed top-1/2 left-1/2: 把玻璃盒左上角定位在屏幕几何中心。
+          - -translate-x-1/2 -translate-y-1/2: 让玻璃盒本身向上和向左偏移自己的一半，实现几何中心对齐。
+          - 为了防止模型过大超出盒子被切，我稍微调大了盒子的宽高（h-[700px] w-[500px]）。
+        */}
+        <div ref={containerRef} className='absolute inset-0 h-full w-full pointer-events-auto' />
+        {status === 'loading' && <div className='text-secondary absolute inset-0 flex items-center justify-center'>召唤甘雨中…</div>}
+        {status === 'error' && <div className='absolute inset-0 flex items-center justify-center p-4 text-center text-red-500'>{errorMsg}</div>}
+    </div>
+)}
