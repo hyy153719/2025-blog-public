@@ -73,8 +73,8 @@ export default function Live2DViewer() {
 					throw new Error('PIXI.live2d.Live2DModel not found')
 				}
 
-				const width = container.clientWidth || 300
-				const height = container.clientHeight || 400
+				const width = container.clientWidth || 350
+				const height = container.clientHeight || 550
 				const canvas = document.createElement('canvas')
 				canvas.style.width = '100%'
 				canvas.style.height = '100%'
@@ -91,14 +91,11 @@ export default function Live2DViewer() {
 				const model = await Live2DModel.from(MODEL_URL)
 				app.stage.addChild(model)
 
-				// 调整模型的重心和位置
 				model.anchor.set(0.5, 0.5)
 				model.x = width / 2
-				model.y = height / 2 + 50 // 稍微往下移一点，防止头顶被切掉
+				model.y = height / 2 + 80   // 把她稍微往下按一点，确保头顶在画面内
+				model.scale.set(0.09, 0.09) // 再稍微缩小一点点，显得更精致
 				
-				// 🔴 关键修改：把原来的 0.25 改成了 0.12，强制缩小模型本身
-				model.scale.set(0.12, 0.12)
-
 				setStatus('ready')
 			} catch (err) {
 				setErrorMsg(err instanceof Error ? err.message : String(err))
