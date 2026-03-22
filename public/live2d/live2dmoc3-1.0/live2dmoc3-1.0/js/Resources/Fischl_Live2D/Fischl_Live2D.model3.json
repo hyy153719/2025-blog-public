@@ -1,0 +1,23 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "Fischl_Live2D.moc3",
+		"Textures": [
+			"Fischl_Live2D.4096/texture_00.png"
+		],
+		"Physics": "Fischl_Live2D.physics3.json",
+		"DisplayInfo": "Fischl_Live2D.cdi3.json"
+	},
+	"Groups": [
+		{
+			"Target": "Parameter",
+			"Name": "EyeBlink",
+			"Ids": []
+		},
+		{
+			"Target": "Parameter",
+			"Name": "LipSync",
+			"Ids": []
+		}
+	]
+}

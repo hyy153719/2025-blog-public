@@ -1,0 +1,547 @@
+{
+	"Version": 3,
+	"Parameters": [
+		{
+			"Id": "ParamAngleX",
+			"GroupId": "ParamGroup2",
+			"Name": "角度 X"
+		},
+		{
+			"Id": "ParamAngleY",
+			"GroupId": "ParamGroup2",
+			"Name": "角度 Y"
+		},
+		{
+			"Id": "ParamAngleZ",
+			"GroupId": "ParamGroup2",
+			"Name": "角度 Z"
+		},
+		{
+			"Id": "ParamBodyAngleX",
+			"GroupId": "ParamGroup2",
+			"Name": "身体旋转　X"
+		},
+		{
+			"Id": "ParamBodyAngleY",
+			"GroupId": "ParamGroup2",
+			"Name": "身体旋转　Y"
+		},
+		{
+			"Id": "ParamBodyAngleZ",
+			"GroupId": "ParamGroup2",
+			"Name": "身体旋转　Z"
+		},
+		{
+			"Id": "Param",
+			"GroupId": "ParamGroup2",
+			"Name": "胯部x"
+		},
+		{
+			"Id": "Param2",
+			"GroupId": "ParamGroup2",
+			"Name": "胯部y"
+		},
+		{
+			"Id": "ParamEyeROpen",
+			"GroupId": "ParamGroup",
+			"Name": "右眼"
+		},
+		{
+			"Id": "ParamEyeRSmile",
+			"GroupId": "ParamGroup",
+			"Name": "右眼　微笑"
+		},
+		{
+			"Id": "ParamEyeBallX",
+			"GroupId": "ParamGroup",
+			"Name": "眼球 X"
+		},
+		{
+			"Id": "ParamEyeBallY",
+			"GroupId": "ParamGroup",
+			"Name": "眼球 Y"
+		},
+		{
+			"Id": "ParamBrowRX",
+			"GroupId": "ParamGroup",
+			"Name": "右眉　左右"
+		},
+		{
+			"Id": "ParamBrowRY",
+			"GroupId": "ParamGroup",
+			"Name": "右眉　上下"
+		},
+		{
+			"Id": "Param16",
+			"GroupId": "ParamGroup",
+			"Name": "眼球大小"
+		},
+		{
+			"Id": "ParamBrowRAngle",
+			"GroupId": "ParamGroup",
+			"Name": "右眉　角度"
+		},
+		{
+			"Id": "ParamBrowRForm",
+			"GroupId": "ParamGroup",
+			"Name": "右眉　変形"
+		},
+		{
+			"Id": "ParamMouthForm",
+			"GroupId": "ParamGroup",
+			"Name": "嘴部　变形"
+		},
+		{
+			"Id": "ParamMouthOpenY",
+			"GroupId": "ParamGroup",
+			"Name": "嘴巴　张开和闭合"
+		},
+		{
+			"Id": "Param65",
+			"GroupId": "ParamGroup",
+			"Name": "嘴型2"
+		},
+		{
+			"Id": "ParamCheek",
+			"GroupId": "ParamGroup",
+			"Name": "脸颊"
+		},
+		{
+			"Id": "Param3",
+			"GroupId": "ParamGroup4",
+			"Name": "右手上臂"
+		},
+		{
+			"Id": "Param4",
+			"GroupId": "ParamGroup4",
+			"Name": "右手下臂"
+		},
+		{
+			"Id": "Param63",
+			"GroupId": "ParamGroup4",
+			"Name": "右手手腕"
+		},
+		{
+			"Id": "Param5",
+			"GroupId": "ParamGroup4",
+			"Name": "左手上臂"
+		},
+		{
+			"Id": "Param6",
+			"GroupId": "ParamGroup4",
+			"Name": "左手下臂"
+		},
+		{
+			"Id": "Param64",
+			"GroupId": "ParamGroup4",
+			"Name": "左手手腕"
+		},
+		{
+			"Id": "Param7",
+			"GroupId": "ParamGroup5",
+			"Name": "左手切换"
+		},
+		{
+			"Id": "Param62",
+			"GroupId": "ParamGroup5",
+			"Name": "左手手腕2"
+		},
+		{
+			"Id": "Param10",
+			"GroupId": "ParamGroup5",
+			"Name": "左手下臂2"
+		},
+		{
+			"Id": "Param8",
+			"GroupId": "ParamGroup6",
+			"Name": "右手切换"
+		},
+		{
+			"Id": "Param11",
+			"GroupId": "ParamGroup6",
+			"Name": "右手下臂1"
+		},
+		{
+			"Id": "Param55",
+			"GroupId": "ParamGroup6",
+			"Name": "右手手腕1"
+		},
+		{
+			"Id": "Param56",
+			"GroupId": "ParamGroup6",
+			"Name": "右手手指1"
+		},
+		{
+			"Id": "Param9",
+			"GroupId": "ParamGroup7",
+			"Name": "右手切换2"
+		},
+		{
+			"Id": "Param12",
+			"GroupId": "ParamGroup7",
+			"Name": "右手下臂2"
+		},
+		{
+			"Id": "Param57",
+			"GroupId": "ParamGroup7",
+			"Name": "右手手腕2"
+		},
+		{
+			"Id": "Param13",
+			"GroupId": "ParamGroup8",
+			"Name": "右手切换3"
+		},
+		{
+			"Id": "Param14",
+			"GroupId": "ParamGroup8",
+			"Name": "右手下臂3"
+		},
+		{
+			"Id": "Param58",
+			"GroupId": "ParamGroup8",
+			"Name": "右手手腕3"
+		},
+		{
+			"Id": "Param59",
+			"GroupId": "ParamGroup8",
+			"Name": "右手手指3-1"
+		},
+		{
+			"Id": "Param60",
+			"GroupId": "ParamGroup8",
+			"Name": "右手手指3-2"
+		},
+		{
+			"Id": "Param61",
+			"GroupId": "ParamGroup8",
+			"Name": "右手手指3-3"
+		},
+		{
+			"Id": "Param15",
+			"GroupId": "ParamGroup8",
+			"Name": "右手抬高"
+		},
+		{
+			"Id": "Param17",
+			"GroupId": "ParamGroup3",
+			"Name": "前发1"
+		},
+		{
+			"Id": "Param18",
+			"GroupId": "ParamGroup3",
+			"Name": "前发1-2"
+		},
+		{
+			"Id": "Param19",
+			"GroupId": "ParamGroup3",
+			"Name": "前发2"
+		},
+		{
+			"Id": "Param20",
+			"GroupId": "ParamGroup3",
+			"Name": "前发2-2"
+		},
+		{
+			"Id": "Param21",
+			"GroupId": "ParamGroup3",
+			"Name": "前发3"
+		},
+		{
+			"Id": "Param22",
+			"GroupId": "ParamGroup3",
+			"Name": "前发3-2"
+		},
+		{
+			"Id": "Param23",
+			"GroupId": "ParamGroup3",
+			"Name": "前发4"
+		},
+		{
+			"Id": "Param24",
+			"GroupId": "ParamGroup3",
+			"Name": "前发4-2"
+		},
+		{
+			"Id": "Param25",
+			"GroupId": "ParamGroup3",
+			"Name": "辫子1"
+		},
+		{
+			"Id": "Param26",
+			"GroupId": "ParamGroup3",
+			"Name": "辫子1-2"
+		},
+		{
+			"Id": "Param27",
+			"GroupId": "ParamGroup3",
+			"Name": "辫子2"
+		},
+		{
+			"Id": "Param28",
+			"GroupId": "ParamGroup3",
+			"Name": "辫子2-2"
+		},
+		{
+			"Id": "Param29",
+			"GroupId": "ParamGroup3",
+			"Name": "辫子装饰1"
+		},
+		{
+			"Id": "Param30",
+			"GroupId": "ParamGroup3",
+			"Name": "辫子装饰1-2"
+		},
+		{
+			"Id": "Param34",
+			"GroupId": "ParamGroup3",
+			"Name": "辫子装饰2"
+		},
+		{
+			"Id": "Param31",
+			"GroupId": "ParamGroup3",
+			"Name": "辫子装饰2-2"
+		},
+		{
+			"Id": "Param32",
+			"GroupId": "ParamGroup3",
+			"Name": "后发1"
+		},
+		{
+			"Id": "Param33",
+			"GroupId": "ParamGroup3",
+			"Name": "后发1-2"
+		},
+		{
+			"Id": "Param35",
+			"GroupId": "ParamGroup3",
+			"Name": "蝴蝶结1"
+		},
+		{
+			"Id": "Param36",
+			"GroupId": "ParamGroup3",
+			"Name": "蝴蝶结1-2"
+		},
+		{
+			"Id": "Param37",
+			"GroupId": "ParamGroup3",
+			"Name": "右手装饰1"
+		},
+		{
+			"Id": "Param38",
+			"GroupId": "ParamGroup3",
+			"Name": "右手装饰1-2"
+		},
+		{
+			"Id": "Param39",
+			"GroupId": "ParamGroup3",
+			"Name": "右手装饰2"
+		},
+		{
+			"Id": "Param54",
+			"GroupId": "ParamGroup3",
+			"Name": "右手装饰2-2"
+		},
+		{
+			"Id": "Param40",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子1"
+		},
+		{
+			"Id": "Param41",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子1-2"
+		},
+		{
+			"Id": "Param42",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子装饰1"
+		},
+		{
+			"Id": "Param43",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子装饰1-2"
+		},
+		{
+			"Id": "Param44",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子装饰2"
+		},
+		{
+			"Id": "Param45",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子装饰2-2"
+		},
+		{
+			"Id": "Param46",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子装饰3"
+		},
+		{
+			"Id": "Param47",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子装饰3-2"
+		},
+		{
+			"Id": "Param48",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子装饰4"
+		},
+		{
+			"Id": "Param49",
+			"GroupId": "ParamGroup3",
+			"Name": "裙子装饰4-2"
+		},
+		{
+			"Id": "Param50",
+			"GroupId": "ParamGroup3",
+			"Name": "下摆1"
+		},
+		{
+			"Id": "Param51",
+			"GroupId": "ParamGroup3",
+			"Name": "下摆1-2"
+		},
+		{
+			"Id": "Param52",
+			"GroupId": "ParamGroup3",
+			"Name": "下摆1-3"
+		},
+		{
+			"Id": "Param53",
+			"GroupId": "ParamGroup3",
+			"Name": "手"
+		}
+	],
+	"ParameterGroups": [
+		{
+			"Id": "ParamGroup2",
+			"GroupId": "",
+			"Name": "XYZ"
+		},
+		{
+			"Id": "ParamGroup",
+			"GroupId": "",
+			"Name": "Face"
+		},
+		{
+			"Id": "ParamGroup4",
+			"GroupId": "",
+			"Name": "手"
+		},
+		{
+			"Id": "ParamGroup5",
+			"GroupId": "",
+			"Name": "左手2"
+		},
+		{
+			"Id": "ParamGroup6",
+			"GroupId": "",
+			"Name": "右手2"
+		},
+		{
+			"Id": "ParamGroup7",
+			"GroupId": "",
+			"Name": "右手3"
+		},
+		{
+			"Id": "ParamGroup8",
+			"GroupId": "",
+			"Name": "右手4"
+		},
+		{
+			"Id": "ParamGroup3",
+			"GroupId": "",
+			"Name": "Physical"
+		}
+	],
+	"Parts": [
+		{
+			"Id": "Part22",
+			"Name": "手臂3.psd"
+		},
+		{
+			"Id": "Part21",
+			"Name": "手叉腰.psd"
+		},
+		{
+			"Id": "Part20",
+			"Name": "手臂改.psd"
+		},
+		{
+			"Id": "Part18",
+			"Name": "手臂2.psd"
+		},
+		{
+			"Id": "Part17",
+			"Name": "头 补.psd"
+		},
+		{
+			"Id": "Part16",
+			"Name": "嘴巴 补.psd"
+		},
+		{
+			"Id": "Part12",
+			"Name": "眼罩 补.psd"
+		},
+		{
+			"Id": "Part",
+			"Name": "ｷﾆﾐｻｶ�"
+		},
+		{
+			"Id": "Part19",
+			"Name": "ﾊﾖ"
+		},
+		{
+			"Id": "Part13",
+			"Name": "ﾗ�ｰﾍ"
+		},
+		{
+			"Id": "Part2",
+			"Name": "ﾍｷ"
+		},
+		{
+			"Id": "Part10",
+			"Name": "ﾓﾒﾊﾖﾗｰﾊﾎ"
+		},
+		{
+			"Id": "Part11",
+			"Name": "ﾊﾖ"
+		},
+		{
+			"Id": "Part14",
+			"Name": "ﾉﾏﾗ�ｴｽ"
+		},
+		{
+			"Id": "Part15",
+			"Name": "ﾏﾂﾗ�ｴｽ"
+		},
+		{
+			"Id": "Part3",
+			"Name": "ﾇｰｷ｢"
+		},
+		{
+			"Id": "Part4",
+			"Name": "ｱ鞅ﾓ ﾗ�"
+		},
+		{
+			"Id": "Part5",
+			"Name": "ｱ鞅ﾓ ﾓﾒ"
+		},
+		{
+			"Id": "Part6",
+			"Name": "ﾁｳｲｿﾒ�ﾓｰ"
+		},
+		{
+			"Id": "Part7",
+			"Name": "ﾁｳ"
+		},
+		{
+			"Id": "Part8",
+			"Name": "ﾑﾛｾｦ"
+		},
+		{
+			"Id": "Part9",
+			"Name": "ﾗ�ｰﾍ"
+		}
+	]
+}
