@@ -1,163 +1,21 @@
-'use client'
+// --- 新增：防弹版互动功能 ---
+				// 1. 在控制台打印看看甘雨到底有哪些动作组
+				const motionGroups = Object.keys(model.internalModel?.motionManager?.motionGroups || {})
+				console.log("甘雨自带的动作组名称有:", motionGroups)
 
-import { useEffect, useRef, useState } from 'react'
-
-/** PIXI Application 实例（CDN 加载，无类型包） */
-interface PixiAppInstance {
-	stage: { addChild: (child: unknown) => void }
-	view: HTMLCanvasElement
-	destroy: (opts?: { removeView?: boolean }) => void
-}
-
-/** Live2D 模型实例 */
-interface Live2DModelInstance {
-	anchor: { set: (x: number, y: number) => void }
-	x: number
-	y: number
-	scale: { set: (x: number, y: number) => void }
-	interactive?: boolean
-	on?: (event: string, callback: () => void) => void
-	internalModel?: {
-		motionManager: {
-			groups: { keys: () => IterableIterator<string> }
-			startRandomMotion: (group: string) => void
-		}
-	}
-}
-
-const CDN_SCRIPTS = [
-	'https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.2.0/browser/pixi.min.js',
-	'https://cubism.live2d.com/sdk-web/cubismcore/live2dcubismcore.min.js',
-	'https://cdn.jsdelivr.net/npm/pixi-live2d-display/dist/cubism4.min.js'
-]
-
-const MODEL_URL = '/live2d/live2dmoc3-1.0/live2dmoc3-1.0/js/Resources/Ganyu/Ganyu.model3.json'
-
-function loadScript(src: string): Promise<void> {
-	return new Promise((resolve, reject) => {
-		if (document.querySelector(`script[src="${src}"]`)) {
-			resolve()
-			return
-		}
-		const script = document.createElement('script')
-		script.src = src
-		script.crossOrigin = 'anonymous'
-		script.onload = () => resolve()
-		script.onerror = () => reject(new Error(`Failed to load script: ${src}`))
-		document.head.appendChild(script)
-	})
-}
-
-export default function Live2DViewer() {
-	const containerRef = useRef<HTMLDivElement>(null)
-	const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading')
-	const [errorMsg, setErrorMsg] = useState<string>('')
-
-	useEffect(() => {
-		const container = containerRef.current
-		if (!container) return
-
-		let app: PixiAppInstance | null = null
-
-		const init = async () => {
-			try {
-				for (const src of CDN_SCRIPTS) {
-					await loadScript(src)
-				}
-
-				const PIXI = (window as unknown as { PIXI: unknown }).PIXI
-				if (!PIXI) {
-					throw new Error('PIXI not found on window')
-				}
-				;(window as unknown as { PIXI: unknown }).PIXI = PIXI
-
-				const PIXIApp = (
-					PIXI as { Application: new (opts: { view: HTMLCanvasElement; width?: number; height?: number; backgroundAlpha?: number }) => PixiAppInstance }
-				).Application
-
-				const Live2DModel = (PIXI as { live2d?: { Live2DModel: { from: (url: string) => Promise<Live2DModelInstance> } } }).live2d?.Live2DModel
-
-				if (!Live2DModel) {
-					throw new Error('PIXI.live2d.Live2DModel not found')
-				}
-
-				// 根据外层盒子自适应读取宽高
-				const width = container.clientWidth || 500
-				const height = container.clientHeight || 700
-				const canvas = document.createElement('canvas')
-				canvas.style.width = '100%'
-				canvas.style.height = '100%'
-				canvas.style.display = 'block'
-				container.appendChild(canvas)
-
-				app = new PIXIApp({
-					view: canvas,
-					width,
-					height,
-					backgroundAlpha: 0
-				})
-
-				const model = await Live2DModel.from(MODEL_URL)
-				app.stage.addChild(model)
-
-				model.anchor.set(0.5, 0.5)
-				model.x = width / 2
-				model.y = height / 2 + 80   // 把她稍微往下按一点，确保头顶在画面内
-				model.scale.set(0.09, 0.09) // 再稍微缩小一点点，显得更精致
-
-				// --- 新增：点击互动功能 ---
-				model.interactive = true
-				model.on?.('pointertap', () => {
-					try {
-						const motionManager = model.internalModel?.motionManager
-						if (motionManager && motionManager.groups) {
-							// 获取甘雨自带的所有动作组，并随机播放第一个组里的动作（如 Scene1）
-							const groups = Array.from(motionManager.groups.keys() as Iterable<string>)
-							if (groups.length > 0) {
-								motionManager.startRandomMotion(groups[0])
-							}
-						}
-					} catch (e) {
-						console.error("播放动作失败", e)
-					}
-				})
-
-				// 悬停时鼠标变成“点击”的小手势
-				model.on?.('pointerover', () => {
-					if (app && (app as any).renderer) {
-						(app as any).renderer.plugins.interaction.cursor = 'pointer'
-					}
-				})
-				model.on?.('pointerout', () => {
-					if (app && (app as any).renderer) {
-						(app as any).renderer.plugins.interaction.cursor = 'default'
+				// 2. 直接给整个 Canvas 画布绑定原生点击事件（绝对不会点空）
+				app.view.style.cursor = 'pointer' // 只要鼠标移到画布区域，就变成小手
+				
+				app.view.addEventListener('pointerdown', () => {
+					// console.log("画布被点击了！") // 你可以按 F12 打开控制台看有没有打印这句话
+					
+					if (motionGroups.length > 0) {
+						// 优先找有没有叫 'Tap' 或 'Idle' 的动作组，没有就直接播放列表里的第一个组
+						const targetGroup = motionGroups.includes('Tap') ? 'Tap' : 
+						                    (motionGroups.includes('Idle') ? 'Idle' : motionGroups[0])
+						
+						// pixi-live2d-display 专属的播放动作 API
+						model.motion(targetGroup)
 					}
 				})
 				// -------------------------
-				
-				setStatus('ready')
-			} catch (err) {
-				setErrorMsg(err instanceof Error ? err.message : String(err))
-				setStatus('error')
-			}
-		}
-
-		init()
-
-		return () => {
-			if (app !== null && typeof app === 'object' && 'destroy' in app && typeof app.destroy === 'function') {
-				app.destroy({ removeView: true })
-			}
-			container.innerHTML = ''
-		}
-	}, [])
-
-	return (
-		<div className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 h-[700px] w-[500px] pointer-events-none'>
-			{/* pointer-events-auto 保证只有甘雨本身能被点击，透明区域不阻挡网页其他内容 */}
-			<div ref={containerRef} className='absolute inset-0 h-full w-full pointer-events-auto' />
-			{status === 'loading' && <div className='text-secondary absolute inset-0 flex items-center justify-center'>召唤甘雨中…</div>}
-			{status === 'error' && <div className='absolute inset-0 flex items-center justify-center p-4 text-center text-red-500'>{errorMsg}</div>}
-		</div>
-	)
-}
