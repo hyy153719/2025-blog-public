@@ -15,6 +15,14 @@ interface Live2DModelInstance {
 	x: number
 	y: number
 	scale: { set: (x: number, y: number) => void }
+	interactive?: boolean
+	on?: (event: string, callback: () => void) => void
+	internalModel?: {
+		motionManager: {
+			groups: { keys: () => IterableIterator<string> }
+			startRandomMotion: (group: string) => void
+		}
+	}
 }
 
 const CDN_SCRIPTS = [
@@ -73,8 +81,9 @@ export default function Live2DViewer() {
 					throw new Error('PIXI.live2d.Live2DModel not found')
 				}
 
-				const width = container.clientWidth || 350
-				const height = container.clientHeight || 550
+				// 根据外层盒子自适应读取宽高
+				const width = container.clientWidth || 500
+				const height = container.clientHeight || 700
 				const canvas = document.createElement('canvas')
 				canvas.style.width = '100%'
 				canvas.style.height = '100%'
@@ -95,6 +104,36 @@ export default function Live2DViewer() {
 				model.x = width / 2
 				model.y = height / 2 + 80   // 把她稍微往下按一点，确保头顶在画面内
 				model.scale.set(0.09, 0.09) // 再稍微缩小一点点，显得更精致
+
+				// --- 新增：点击互动功能 ---
+				model.interactive = true
+				model.on?.('pointertap', () => {
+					try {
+						const motionManager = model.internalModel?.motionManager
+						if (motionManager && motionManager.groups) {
+							// 获取甘雨自带的所有动作组，并随机播放第一个组里的动作（如 Scene1）
+							const groups = Array.from(motionManager.groups.keys() as Iterable<string>)
+							if (groups.length > 0) {
+								motionManager.startRandomMotion(groups[0])
+							}
+						}
+					} catch (e) {
+						console.error("播放动作失败", e)
+					}
+				})
+
+				// 悬停时鼠标变成“点击”的小手势
+				model.on?.('pointerover', () => {
+					if (app && (app as any).renderer) {
+						(app as any).renderer.plugins.interaction.cursor = 'pointer'
+					}
+				})
+				model.on?.('pointerout', () => {
+					if (app && (app as any).renderer) {
+						(app as any).renderer.plugins.interaction.cursor = 'default'
+					}
+				})
+				// -------------------------
 				
 				setStatus('ready')
 			} catch (err) {
@@ -113,19 +152,12 @@ export default function Live2DViewer() {
 		}
 	}, [])
 
-// 🔴 关键修改：去掉了圆角(rounded-full)和正方形(aspect-square)
-// 改成了 fixed 悬浮定位，固定在右下角 (bottom-0 right-0)，并设置了固定的宽高限制
-// 🔴 替换为这一段
-return (
-    <div className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 h-[700px] w-[500px] pointer-events-none'>
-        {/*
-          说明：
-          - fixed top-1/2 left-1/2: 把玻璃盒左上角定位在屏幕几何中心。
-          - -translate-x-1/2 -translate-y-1/2: 让玻璃盒本身向上和向左偏移自己的一半，实现几何中心对齐。
-          - 为了防止模型过大超出盒子被切，我稍微调大了盒子的宽高（h-[700px] w-[500px]）。
-        */}
-        <div ref={containerRef} className='absolute inset-0 h-full w-full pointer-events-auto' />
-        {status === 'loading' && <div className='text-secondary absolute inset-0 flex items-center justify-center'>召唤甘雨中…</div>}
-        {status === 'error' && <div className='absolute inset-0 flex items-center justify-center p-4 text-center text-red-500'>{errorMsg}</div>}
-    </div>
-)}
+	return (
+		<div className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 h-[700px] w-[500px] pointer-events-none'>
+			{/* pointer-events-auto 保证只有甘雨本身能被点击，透明区域不阻挡网页其他内容 */}
+			<div ref={containerRef} className='absolute inset-0 h-full w-full pointer-events-auto' />
+			{status === 'loading' && <div className='text-secondary absolute inset-0 flex items-center justify-center'>召唤甘雨中…</div>}
+			{status === 'error' && <div className='absolute inset-0 flex items-center justify-center p-4 text-center text-red-500'>{errorMsg}</div>}
+		</div>
+	)
+}
