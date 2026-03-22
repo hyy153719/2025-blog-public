@@ -116,7 +116,7 @@ export default function Live2DViewer() {
 // 🔴 关键修改：去掉了圆角(rounded-full)和正方形(aspect-square)
 // 改成了 fixed 悬浮定位，固定在右下角 (bottom-0 right-0)，并设置了固定的宽高限制
 	return (
-		<div className='fixed bottom-0 right-0 z-50 h-[400px] w-[300px] pointer-events-none'>
+		<div className='fixed bottom-0 right-0 z-50 h-[550px] w-[350px] pointer-events-none'>
 			<div ref={containerRef} className='absolute inset-0 h-full w-full pointer-events-auto' />
 			{status === 'loading' && <div className='text-secondary absolute inset-0 flex items-center justify-center'>加载甘雨中…</div>}
 			{status === 'error' && <div className='absolute inset-0 flex items-center justify-center p-4 text-center text-red-500'>{errorMsg}</div>}
