@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 
-/** PIXI Application 实例（CDN 加载，无类型包） */
+/** PIXI Application 实例 */
 interface PixiAppInstance {
 	stage: { addChild: (child: unknown) => void }
 	view: HTMLCanvasElement
@@ -15,12 +15,6 @@ interface Live2DModelInstance {
 	x: number
 	y: number
 	scale: { set: (x: number, y: number) => void }
-	motion: (group: string, index?: number, priority?: number) => void
-	internalModel?: {
-		motionManager?: {
-			motionGroups?: Record<string, unknown>
-		}
-	}
 }
 
 const CDN_SCRIPTS = [
@@ -79,7 +73,6 @@ export default function Live2DViewer() {
 					throw new Error('PIXI.live2d.Live2DModel not found')
 				}
 
-				// 读取自适应的宽高（配合 Tailwind 设置的宽高）
 				const width = container.clientWidth || 500
 				const height = container.clientHeight || 700
 				const canvas = document.createElement('canvas')
@@ -92,48 +85,17 @@ export default function Live2DViewer() {
 					view: canvas,
 					width,
 					height,
-					backgroundAlpha: 0 // 背景透明
+					backgroundAlpha: 0
 				})
 
 				const model = await Live2DModel.from(MODEL_URL)
 				app.stage.addChild(model)
 
-				// 调整模型的重心和位置
+				// 调整模型的重心、位置和缩放比例
 				model.anchor.set(0.5, 0.5)
 				model.x = width / 2
-				model.y = height / 2 + 80   // 把她稍微往下按一点，确保头顶在画面内
-				model.scale.set(0.09, 0.09) // 调整缩放比例
-
-				// --- 核心新增：防弹版点击互动功能 ---
-				// 1. 获取模型内部所有的动作组名称
-				const motionGroups = Object.keys(model.internalModel?.motionManager?.motionGroups || {})
-				console.log("甘雨自带的动作组名称有:", motionGroups)
-
-				// 2. 将鼠标悬浮在画布上时，光标变为小手形状
-				app.view.style.cursor = 'pointer'
-
-				// 3. 监听整个画布的点击事件，绝对不会点空
-				// 3. 监听整个画布的点击事件，绝对不会点空
-				app.view.addEventListener('pointerdown', () => {
-					if (motionGroups.length > 0) {
-						// 优先寻找 Tap (点击) 或 Idle (待机) 的动作组
-						const targetGroup = motionGroups.includes('Tap') ? 'Tap' : 
-						                    (motionGroups.includes('Idle') ? 'Idle' : motionGroups[0])
-						
-						console.log("准备强制播放动作组:", targetGroup)
-						
-						// 🔴 关键修复：换成底层的原生 API，使用 startRandomMotion
-						try {
-							if (model.internalModel && model.internalModel.motionManager) {
-								model.internalModel.motionManager.startRandomMotion(targetGroup)
-								console.log("动作指令发送成功！")
-							}
-						} catch (err) {
-							console.error("底层播放报错:", err)
-						}
-					}
-				})
-				// -------------------------
+				model.y = height / 2 + 80
+				model.scale.set(0.09, 0.09)
 
 				setStatus('ready')
 			} catch (err) {
@@ -153,9 +115,10 @@ export default function Live2DViewer() {
 	}, [])
 
 	return (
-		// 居中定位：固定在屏幕正中央，限制宽高防止过大
+		// 💡 小贴士：如果以后觉得甘雨在中间太挡视线，
+		// 只需要把 className 里的 `top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`
+		// 替换成 `bottom-0 right-0` 就可以让她回到右下角啦！
 		<div className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 h-[700px] w-[500px] pointer-events-none'>
-			{/* pointer-events-auto 保证透明画板的区域可以接受点击 */}
 			<div ref={containerRef} className='absolute inset-0 h-full w-full pointer-events-auto' />
 			{status === 'loading' && <div className='text-secondary absolute inset-0 flex items-center justify-center'>召唤甘雨中…</div>}
 			{status === 'error' && <div className='absolute inset-0 flex items-center justify-center p-4 text-center text-red-500'>{errorMsg}</div>}
