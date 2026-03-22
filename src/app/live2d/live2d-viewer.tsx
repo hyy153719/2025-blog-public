@@ -113,14 +113,24 @@ export default function Live2DViewer() {
 				app.view.style.cursor = 'pointer'
 
 				// 3. 监听整个画布的点击事件，绝对不会点空
+				// 3. 监听整个画布的点击事件，绝对不会点空
 				app.view.addEventListener('pointerdown', () => {
 					if (motionGroups.length > 0) {
-						// 优先寻找 Tap (点击) 或 Idle (待机) 的动作组，如果都没有就取第一个
+						// 优先寻找 Tap (点击) 或 Idle (待机) 的动作组
 						const targetGroup = motionGroups.includes('Tap') ? 'Tap' : 
 						                    (motionGroups.includes('Idle') ? 'Idle' : motionGroups[0])
 						
-						// 强制模型播放该组的随机动作
-						model.motion(targetGroup)
+						console.log("准备强制播放动作组:", targetGroup)
+						
+						// 🔴 关键修复：换成底层的原生 API，使用 startRandomMotion
+						try {
+							if (model.internalModel && model.internalModel.motionManager) {
+								model.internalModel.motionManager.startRandomMotion(targetGroup)
+								console.log("动作指令发送成功！")
+							}
+						} catch (err) {
+							console.error("底层播放报错:", err)
+						}
 					}
 				})
 				// -------------------------
