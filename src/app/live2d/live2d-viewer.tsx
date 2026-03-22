@@ -73,8 +73,8 @@ export default function Live2DViewer() {
 					throw new Error('PIXI.live2d.Live2DModel not found')
 				}
 
-				const width = container.clientWidth || 500
-				const height = container.clientHeight || 500
+				const width = container.clientWidth || 300
+				const height = container.clientHeight || 400
 				const canvas = document.createElement('canvas')
 				canvas.style.width = '100%'
 				canvas.style.height = '100%'
@@ -91,10 +91,13 @@ export default function Live2DViewer() {
 				const model = await Live2DModel.from(MODEL_URL)
 				app.stage.addChild(model)
 
+				// 调整模型的重心和位置
 				model.anchor.set(0.5, 0.5)
 				model.x = width / 2
-				model.y = height / 2
-				model.scale.set(0.25, 0.25)
+				model.y = height / 2 + 50 // 稍微往下移一点，防止头顶被切掉
+				
+				// 🔴 关键修改：把原来的 0.25 改成了 0.12，强制缩小模型本身
+				model.scale.set(0.12, 0.12)
 
 				setStatus('ready')
 			} catch (err) {
@@ -113,10 +116,12 @@ export default function Live2DViewer() {
 		}
 	}, [])
 
+// 🔴 关键修改：去掉了圆角(rounded-full)和正方形(aspect-square)
+// 改成了 fixed 悬浮定位，固定在右下角 (bottom-0 right-0)，并设置了固定的宽高限制
 	return (
-		<div className='relative aspect-square w-full overflow-hidden rounded-full'>
-			<div ref={containerRef} className='absolute inset-0 h-full w-full' />
-			{status === 'loading' && <div className='text-secondary absolute inset-0 flex items-center justify-center'>加载 Live2D 模型中…</div>}
+		<div className='fixed bottom-0 right-0 z-50 h-[400px] w-[300px] pointer-events-none'>
+			<div ref={containerRef} className='absolute inset-0 h-full w-full pointer-events-auto' />
+			{status === 'loading' && <div className='text-secondary absolute inset-0 flex items-center justify-center'>加载甘雨中…</div>}
 			{status === 'error' && <div className='absolute inset-0 flex items-center justify-center p-4 text-center text-red-500'>{errorMsg}</div>}
 		</div>
 	)
