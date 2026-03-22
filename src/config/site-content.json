@@ -5,7 +5,7 @@
 		"username": "hyy"
 	},
 	"theme": {
-		"colorBrand": "#0A926F",
+		"colorBrand": "#35bfab",
 		"colorPrimary": "#334f52",
 		"colorSecondary": "#7b888e",
 		"colorBrandSecondary": "#1fc9e7",
@@ -15,13 +15,12 @@
 		"colorArticle": "#ffffffcc"
 	},
 	"backgroundColors": [
-		"#EB8CA8",
-		"#F6D4BB",
-		"#ADFDB1",
-		"#C4A5A3",
-		"#163E20",
-		"#1639C0",
-		"#B047A8"
+		"#EDDD62",
+		"#9EE7D1",
+		"#84D68A",
+		"#EDDD62",
+		"#88E6E5",
+		"#a7f3d0"
 	],
 	"artImages": [
 		{
