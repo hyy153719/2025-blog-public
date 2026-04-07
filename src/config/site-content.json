@@ -26,19 +26,15 @@
 	],
 	"artImages": [
 		{
-			"id": "cat",
-			"url": "/images/art/cat.png"
-		},
-		{
-			"id": "a46372ff45bc5524",
-			"url": "/images/art/a46372ff45bc5524.jpg"
-		},
-		{
 			"id": "75fe7c620ea8cb2f",
 			"url": "/images/art/75fe7c620ea8cb2f.jpg"
+		},
+		{
+			"id": "58f460c4d05416d0",
+			"url": "/images/art/58f460c4d05416d0.jpg"
 		}
 	],
-	"currentArtImageId": "a46372ff45bc5524",
+	"currentArtImageId": "58f460c4d05416d0",
 	"backgroundImages": [
 		{
 			"id": "",
