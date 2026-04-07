@@ -17,12 +17,12 @@ aria2c --all-proxy="socks5://<代理IP>:<代理端口>" -c -x 16 -s 16 -d . -o "
 命令如下：
 curl.exe -x socks5h://direct.miyaip.online:8001 -L -C - -o "akiumLumenILLBase_base.safetensors" "https://civitai.com/api/download/models/251543?token=c83f40d1622e050316e9655c5b5fac9b"
 
-第二次报错是因为我的代理需要进行身份验证，这个问题很快就解决了
+**第二次报错**是因为我的代理需要进行身份验证，这个问题很快就解决了
 curl.exe -x socks5h://你的代理账号:你的代理密码@direct.miyaip.online:8001 -L -C - -o "akiumLumenILLBase_base.safetensors" "https://civitai.com/api/download/models/251543?token=c83f40d1622e050316e9655c5b5fac9b"
 
-第三次报错信息 curl: (18) end of response with 6524274796 bytes missing 意思是：服务器或代理单方面强行切断了连接。由于在命令里加了 -C -（断点续传）参数，只需要重复执行。
+**第三次报错**信息 curl: (18) end of response with 6524274796 bytes missing 意思是：服务器或代理单方面强行切断了连接。由于在命令里加了 -C -（断点续传）参数，只需要重复执行。
 
-第四次报错![](/blogs/model-download-fix/5da3aa3d20ae8a38.png)意思是“服务器不支持断点续传”。
+**第四次报错**![](/blogs/model-download-fix/5da3aa3d20ae8a38.png)意思是“服务器不支持断点续传”。
 原因是https://civitai.com/api/download/...。这是一个 API 中转链接。
 curl 收到断点续传的指令（-C -）后，直接跑去问这个中转站能不能续传，中转站说“我只负责跳转，手里没文件，不支持续传”，于是 curl 就直接罢工了，根本没走到真正存放文件的服务器那一步。
 于是我到浏览器 ctrl+j 打开下载界面，直接复制下载链接，绕过 API 验证，接着下载。
