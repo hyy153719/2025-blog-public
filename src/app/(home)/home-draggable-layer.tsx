@@ -217,7 +217,7 @@ export function HomeDraggableLayer({ cardKey, x, y, width, height, children }: H
 		<>
 			{editing && (
 				<div
-					className='border-brand/70 bg-brand/5 pointer-events-auto absolute z-40 cursor-move rounded-[40px] border border-dashed'
+					className='border-brand/70 bg-brand/2 pointer-events-auto absolute z-40 cursor-move rounded-[40px] border border-dashed'
 					style={{ left: x, top: y, width, height }}
 					onMouseDown={handleMouseDown}
 					onTouchStart={handleTouchStart}>
