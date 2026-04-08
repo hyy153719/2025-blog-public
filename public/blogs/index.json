@@ -1,5 +1,14 @@
 [
   {
+    "slug": "Linux",
+    "title": "操作系统",
+    "tags": [],
+    "date": "2026-04-07T21:07",
+    "summary": "",
+    "hidden": false,
+    "category": ""
+  },
+  {
     "slug": "model-download-fix",
     "title": "模型下载慢、下载超时的解决办法",
     "tags": [],
