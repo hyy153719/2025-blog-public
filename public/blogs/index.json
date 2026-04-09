@@ -1,5 +1,14 @@
 [
   {
+    "slug": "model-value",
+    "title": "Comfyui中不同模型作用",
+    "tags": [],
+    "date": "2026-04-08T23:11",
+    "summary": "",
+    "hidden": false,
+    "category": ""
+  },
+  {
     "slug": "model-name",
     "title": "AI模型名称中的各种参数",
     "tags": [],
