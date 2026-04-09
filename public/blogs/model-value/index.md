@@ -19,7 +19,7 @@ VAE (Variational Autoencoder)：
 
 意思： 你可以把它理解为 AI 生成图片前的最后一道“色彩滤镜解析器”。如果没有正确的 VAE，生成的图片往往会像蒙了一层灰白色的雾，色彩干瘪。很多sdxl模型都是内置了VAE的，我用过的类似qwen，z-image等是需要单独连VAE的
 
-4.控制与结构 
+4. 控制与结构 
 
 **ControlNet**
 
