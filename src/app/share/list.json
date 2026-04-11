@@ -232,5 +232,15 @@
 			"3D"
 		],
 		"stars": 3
+	},
+	{
+		"name": "pinterest",
+		"logo": "blob:https://2025-blog-public-green.vercel.app/05b6129c-7bc5-499d-b76a-8276b7bea3cc",
+		"url": "https://www.pinterest.com/",
+		"description": "可以找灵感",
+		"tags": [
+			"图片素材"
+		],
+		"stars": 3
 	}
 ]
