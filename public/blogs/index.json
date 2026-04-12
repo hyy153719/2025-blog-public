@@ -1,5 +1,14 @@
 [
   {
+    "slug": "light",
+    "title": "光影提示词",
+    "tags": [],
+    "date": "2026-04-11T22:45",
+    "summary": "",
+    "hidden": false,
+    "category": ""
+  },
+  {
     "slug": "shot",
     "title": "Claude总结的镜头提示词",
     "tags": [],
