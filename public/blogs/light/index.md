@@ -115,3 +115,62 @@ shadow play
 神秘黑暗underlighting + harsh lighting + candlelight
 
 电影质感rim lighting + lens flare + side lighting
+
+
+自然光
+
+golden hour 黄金时段，暖橙色柔光
+
+blue hour 蓝调时刻，日落后冷蓝光
+
+sunlight through leaves 树叶透光，光斑效果
+
+overcast lighting 阴天散射光，无阴影柔和
+
+moonlight 月光，冷白偏蓝
+
+方向
+
+rim lighting 轮廓光，边缘发光感
+
+backlighting / contre-jour 逆光，主体偏暗背景亮
+
+side lighting 侧光，强调立体感
+
+front lighting 正面光，均匀明亮
+
+underlighting 从下方打光，神秘感
+
+氛围光
+
+volumetric light 体积光，光束穿透感
+
+god rays 丁达尔效应，光从云缝射下
+
+candlelight 烛光，暖黄摇曳
+
+neon lighting 霓虹光，赛博感
+
+firelight 篝火光，橙红跳动
+
+色调倾向
+
+warm lighting 暖光，橙黄色调
+
+cold lighting 冷光，蓝白色调
+
+soft lighting 柔光，无明显阴影
+
+harsh lighting 硬光，强对比阴影
+
+dramatic lighting 戏剧性光影，高对比
+
+特效
+
+lens flare 镜头光晕
+
+bloom 发光溢出效果
+
+caustics 水面折射光斑
+
+shadow play 光影投影图案
