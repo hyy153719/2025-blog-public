@@ -252,5 +252,15 @@
 			"ai模型"
 		],
 		"stars": 3
+	},
+	{
+		"name": "PoseSearch",
+		"logo": "blob:https://2025-blog-public-green.vercel.app/49959f8a-3e48-49e9-af26-ae1d47269f47",
+		"url": "https://x6ud.github.io/pose-search/#/",
+		"description": "有很多身体参考",
+		"tags": [
+			"图片素材"
+		],
+		"stars": 3
 	}
 ]
