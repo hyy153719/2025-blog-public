@@ -262,5 +262,15 @@
 			"图片素材"
 		],
 		"stars": 3
+	},
+	{
+		"name": "qwen视角滑块",
+		"logo": "blob:https://2025-blog-public-green.vercel.app/1a4941b5-bcbc-427e-b828-a32db56f6107",
+		"url": "https://huggingface.co/spaces/multimodalart/qwen-image-multiple-angles-3d-camera",
+		"description": "通过 3D 视口或滑块控制摄像机角度",
+		"tags": [
+			"图片"
+		],
+		"stars": 3
 	}
 ]
