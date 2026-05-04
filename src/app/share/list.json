@@ -272,5 +272,25 @@
 			"图片"
 		],
 		"stars": 3
+	},
+	{
+		"name": "buzzing",
+		"logo": "blob:https://2025-blog-public-green.vercel.app/1a32b0bb-95b3-4046-83f6-81415d0fa305",
+		"url": "https://www.buzzing.cc/",
+		"description": "全球的新闻",
+		"tags": [
+			"热点"
+		],
+		"stars": 3
+	},
+	{
+		"name": "今日热榜",
+		"logo": "blob:https://2025-blog-public-green.vercel.app/98447c82-491b-4a2d-bc17-14e86b7bc741",
+		"url": "https://tophub.today/",
+		"description": "各个网站的热点信息汇总",
+		"tags": [
+			"热点"
+		],
+		"stars": 3
 	}
 ]
