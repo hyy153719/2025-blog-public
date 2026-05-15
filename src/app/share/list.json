@@ -292,5 +292,25 @@
 			"热点"
 		],
 		"stars": 3
+	},
+	{
+		"name": "evnato",
+		"logo": "blob:https://2025-blog-public-green.vercel.app/c0c4a96b-b148-4889-b037-a1542dc06e48",
+		"url": "https://app.envato.com/",
+		"description": "音效下载",
+		"tags": [
+			"音效"
+		],
+		"stars": 3
+	},
+	{
+		"name": "remotion",
+		"logo": "blob:https://2025-blog-public-green.vercel.app/4a0da30d-71b1-4006-bc2b-be3504c15514",
+		"url": "https://remotionlab.com/showcase/transition-slide-push",
+		"description": "remotion动画素材",
+		"tags": [
+			"动画"
+		],
+		"stars": 3
 	}
 ]
